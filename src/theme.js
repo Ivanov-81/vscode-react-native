@@ -1,0 +1,8 @@
+export const THEME = {
+  DANGER_COLOR: '#FF0000',
+  GREY_COLOR: '#757575',
+  MAIN_COLOR: '#613BE7',
+  BORDER_COLOR: '#EEE',
+  GREEN_COLOR: 'green',
+  PADDING_HORIZONTAL: 30
+};
