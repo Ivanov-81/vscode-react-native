@@ -1,0 +1,7 @@
+export const URL_MAIN = "http://178.62.249.118:4544"
+export const URL_START = "/start_app"
+export const URL_NEW_GAME = "/new_game"
+export const URL_GET_QUESTION = "/get_question"
+export const URL_ANSWER = "/answer"
+export const URL_LOGIN = "/login"
+export const URL_REGISTER = "/register"

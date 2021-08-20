@@ -11,6 +11,7 @@ import {
   SHOW_LOADER,
   UPDATE_TODO,
 } from "../types";
+import { URL_MAIN } from "../../urls/urls";
 import { TodoContext } from "./todoContext";
 import { todoReduser } from "./todoReduser";
 
@@ -62,17 +63,15 @@ export const TodoState = ({ children }) => {
 
   const fetchTodos = async () => {
     showLoader();
-    const response = await fetch(
-      "https://rn-todo-app-24f08-default-rtdb.firebaseio.com/todos.json",
-      {
-        method: "GET",
-        headers: { "Content-Type": "application.json" },
-      }
-    );
-    const data = await response.json();
-    console.log(data);
-    const todos = Object.keys(data).map((key) => ({ ...data[key], id: key }));
-    dispatch({ type: FETCH_TODOS, todos });
+    const response = await fetch("http://178.62.249.118:4544", {
+      method: "GET",
+      headers: { "Content-Type": "application.json" },
+    });
+    console.log(response);
+    // const data = await response.json();
+    // console.log(data);
+    // const todos = Object.keys(data).map((key) => ({ ...data[key], id: key }));
+    // dispatch({ type: FETCH_TODOS, todos });
     // hideLoader();
   };
 
