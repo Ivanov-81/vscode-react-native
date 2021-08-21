@@ -4,8 +4,7 @@ import {
   View,
   FlatList,
   Image,
-  Dimensions,
-  ActivityIndicator,
+  Dimensions
 } from "react-native";
 import { AddTodo } from "../components/AddTodo";
 import { Todo } from "../components/Todo";
@@ -13,7 +12,8 @@ import { AppLoader } from "../components/ui/AppLoader";
 import { ScreenContext } from "../context/screen/screenContext";
 import { TodoContext } from "../context/todo/todoContext";
 import { THEME } from "../theme";
-import AppLoading from "expo-app-loading";
+import { AppText } from "../components/ui/AppText";
+import { AppButton } from "../components/ui/AppButton";
 
 export const MainScreen = () => {
   const { todos, addTodo, removeTodo, fetchTodos, loading, error } =
@@ -43,10 +43,16 @@ export const MainScreen = () => {
   });
 
   if (loading) {
-    // console.log(loading);
-    // return <View style={styles.center}>
-    //     <ActivityIndicator size="large" />
-    //   </View>
+    return <AppLoader />
+  }
+
+  if (error) {
+    return (
+      <View style={styles.center}>
+        <AppText style={styles.error}>Что-то пошло не так...</AppText>
+        <AppButton onPress={loadTodos}>Повторить</AppButton>
+      </View>
+    )
   }
 
   let content = (
@@ -97,4 +103,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  error: {
+    fontSize: 20,
+    color: THEME.DANGER_COLOR,
+    marginBottom: 15
+  }
 });
